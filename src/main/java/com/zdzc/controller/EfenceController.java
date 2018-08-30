@@ -1,6 +1,7 @@
 package com.zdzc.controller;
 
-import com.zdzc.task.EefenceTask;
+
+import com.zdzc.task.EfenceTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +18,9 @@ public class EfenceController {
 
     @RequestMapping("/test")
     public void test() throws Exception{
-        EefenceTask et1 = new EefenceTask("et1");
+        EfenceTask et1 = new EfenceTask("et1");
         executor.execute(et1);
-        EefenceTask et2 = new EefenceTask("et2");
+        EfenceTask et2 = new EfenceTask("et2");
         executor.execute(et2);
         Thread.sleep(5000);
         et1.stopWork();
