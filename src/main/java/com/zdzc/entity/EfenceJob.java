@@ -17,6 +17,10 @@ public class EfenceJob {
 
     private String remark;
 
+    private Integer period;
+
+    private Integer type;
+
     private String deviceCodes;
 
     public Integer getId() {
@@ -73,6 +77,22 @@ public class EfenceJob {
 
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
+    }
+
+    public Integer getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(Integer period) {
+        this.period = period;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     public String getDeviceCodes() {

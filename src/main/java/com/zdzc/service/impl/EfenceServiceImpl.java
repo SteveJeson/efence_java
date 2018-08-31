@@ -6,6 +6,8 @@ import com.zdzc.service.EfenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 /**
  * Created by Administrator on 2018/8/31 0031.
  */
@@ -18,5 +20,12 @@ public class EfenceServiceImpl implements EfenceService {
     @Override
     public Efence selectEfenceByCode(String code) throws Exception {
         return efenceMapper.selectByCode(code);
+    }
+
+    @Override
+    public void insertEfence(Efence efence) {
+        efence.setRunStatus(1);
+        efence.setCode(UUID.randomUUID().toString());
+        efenceMapper.insert(efence);
     }
 }

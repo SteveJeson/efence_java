@@ -9,6 +9,8 @@
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="period" property="period" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
     <result column="device_codes" property="deviceCodes" jdbcType="LONGVARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
@@ -17,11 +19,13 @@
   </delete>
   <insert id="insert" parameterType="com.zdzc.entity.EfenceJob" >
     insert into efence_job (id, job_code, efence_code, 
-      name, status, create_time, 
-      remark, device_codes)
+      name, status,
+      remark, period, type, 
+      device_codes)
     values (#{id,jdbcType=INTEGER}, #{jobCode,jdbcType=VARCHAR}, #{efenceCode,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{remark,jdbcType=VARCHAR}, #{deviceCodes,jdbcType=LONGVARCHAR})
+      #{name,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
+      #{remark,jdbcType=VARCHAR}, #{period,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
+      #{deviceCodes,jdbcType=LONGVARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zdzc.entity.EfenceJob" >
     update efence_job
@@ -29,18 +33,21 @@
       efence_code = #{efenceCode,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
       remark = #{remark,jdbcType=VARCHAR},
+      period = #{period,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
       device_codes = #{deviceCodes,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select id, job_code, efence_code, name, status, create_time, remark, device_codes
+    select id, job_code, efence_code, name, status, create_time, remark, period, type, 
+    device_codes
     from efence_job
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select id, job_code, efence_code, name, status, create_time, remark, device_codes
+    select id, job_code, efence_code, name, status, create_time, remark, period, type, 
+    device_codes
     from efence_job
   </select>
 </mapper>

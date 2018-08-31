@@ -7,4 +7,6 @@ import com.zdzc.entity.Efence;
  */
 public interface EfenceService {
     Efence selectEfenceByCode(String code) throws Exception;
+
+    void insertEfence(Efence efence);
 }

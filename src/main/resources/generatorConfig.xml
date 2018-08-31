@@ -31,9 +31,9 @@
                         <!--password="${spring.datasource.password}">-->
         <!--</jdbcConnection>-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.1.53:3306/efence"
-                        userId="root"
-                        password="1234">
+                        connectionURL="jdbc:mysql://192.168.1.161:3306/efence"
+                        userId="zdzc"
+                        password="zdzc">
         </jdbcConnection>
 
         <!--生成的model 包路径 -->
@@ -89,13 +89,13 @@
             <!--&lt;!&ndash;<generatedKey column="id" sqlStatement="select SEQ_{1}.nextval from dual" identity="false" type="pre"/>&ndash;&gt;-->
         <!--</table>-->
 
-        <table tableName="efence" domainObjectName="Efence">
-            <property name="useActualColumnNames" value="false"/>
-            <!--mysql 配置-->
-            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-            <!--oracle 配置-->
-            <!--<generatedKey column="id" sqlStatement="select SEQ_{1}.nextval from dual" identity="false" type="pre"/>-->
-        </table>
+        <!--<table tableName="efence" domainObjectName="Efence">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--&lt;!&ndash;mysql 配置&ndash;&gt;-->
+            <!--&lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql" identity="true"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;oracle 配置&ndash;&gt;-->
+            <!--&lt;!&ndash;<generatedKey column="id" sqlStatement="select SEQ_{1}.nextval from dual" identity="false" type="pre"/>&ndash;&gt;-->
+        <!--</table>-->
         <table tableName="efence_job" domainObjectName="EfenceJob">
             <property name="useActualColumnNames" value="false"/>
             <!--mysql 配置-->

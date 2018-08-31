@@ -3,9 +3,10 @@ package com.zdzc.controller;
 
 import com.zdzc.entity.Efence;
 import com.zdzc.service.EfenceService;
-import com.zdzc.task.EfenceTask;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +17,10 @@ import java.util.Map;
  * Created by Administrator on 2018/8/30 0030.
  */
 @RestController
+@RequestMapping("/efence")
 public class EfenceController {
+
+    private static final Logger logger = LoggerFactory.getLogger(EfenceController.class);
 
     @Autowired
     private EfenceService efenceService;
@@ -36,4 +40,21 @@ public class EfenceController {
         result.put("result", efence);
         return result;
     }
+
+    @RequestMapping("/create")
+    public Map<String, Object> createEfence(@RequestBody Efence efence) {
+        Map<String, Object> resultMap = new HashMap<>();
+        try{
+            efenceService.insertEfence(efence);
+            resultMap.put("statusCode", 200);
+            resultMap.put("success", true);
+            resultMap.put("message", "创建电子围栏成功！");
+        }catch (Exception e) {
+            resultMap.put("statusCode", 500);
+            resultMap.put("success", false);
+            resultMap.put("message", "创建电子围栏失败！");
+        }
+        return resultMap;
+    }
+
 }
