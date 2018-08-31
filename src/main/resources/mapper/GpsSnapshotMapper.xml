@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zdzc.dao.GpsSnapshotMapper" >
+  <resultMap id="BaseResultMap" type="com.zdzc.entity.GpsSnapshot" >
+    <id column="device_code" property="deviceCode" jdbcType="VARCHAR" />
+    <result column="alarm_status" property="alarmStatus" jdbcType="INTEGER" />
+    <result column="vehicle_status" property="vehicleStatus" jdbcType="INTEGER" />
+    <result column="lat" property="lat" jdbcType="DOUBLE" />
+    <result column="lon" property="lon" jdbcType="DOUBLE" />
+    <result column="height" property="height" jdbcType="DOUBLE" />
+    <result column="speed" property="speed" jdbcType="DOUBLE" />
+    <result column="direction" property="direction" jdbcType="DOUBLE" />
+    <result column="time" property="time" jdbcType="BIGINT" />
+    <result column="mile" property="mile" jdbcType="DOUBLE" />
+    <result column="oil" property="oil" jdbcType="DOUBLE" />
+    <result column="speed2" property="speed2" jdbcType="DOUBLE" />
+    <result column="signal_status" property="signalStatus" jdbcType="INTEGER" />
+    <result column="bst" property="bst" jdbcType="INTEGER" />
+    <result column="io_status" property="ioStatus" jdbcType="INTEGER" />
+    <result column="analog" property="analog" jdbcType="VARCHAR" />
+    <result column="wifi" property="wifi" jdbcType="INTEGER" />
+    <result column="satellite_num" property="satelliteNum" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="vendor_code" property="vendorCode" jdbcType="VARCHAR" />
+    <result column="heartbeat_time" property="heartbeatTime" jdbcType="VARCHAR" />
+    <result column="bst_time" property="bstTime" jdbcType="BIGINT" />
+    <result column="location_time" property="locationTime" jdbcType="TIMESTAMP" />
+    <result column="alarm_time" property="alarmTime" jdbcType="TIMESTAMP" />
+    <result column="protocol_type" property="protocolType" jdbcType="VARCHAR" />
+    <result column="wrt_acc_status" property="wrtAccStatus" jdbcType="VARCHAR" />
+    <result column="wrt_bast_status" property="wrtBastStatus" jdbcType="VARCHAR" />
+    <result column="wrt_tear_status" property="wrtTearStatus" jdbcType="VARCHAR" />
+    <result column="wrt_work_status" property="wrtWorkStatus" jdbcType="VARCHAR" />
+    <result column="wrt_manual_bast" property="wrtManualBast" jdbcType="VARCHAR" />
+    <result column="wrt_auto_bast" property="wrtAutoBast" jdbcType="VARCHAR" />
+    <result column="wrt_autobast_time" property="wrtAutobastTime" jdbcType="INTEGER" />
+    <result column="wrt_power_status" property="wrtPowerStatus" jdbcType="VARCHAR" />
+    <result column="wrt_opower_status" property="wrtOpowerStatus" jdbcType="VARCHAR" />
+    <result column="wrt_move_status" property="wrtMoveStatus" jdbcType="VARCHAR" />
+    <result column="wrt_alarm_status" property="wrtAlarmStatus" jdbcType="VARCHAR" />
+    <result column="wrt_heart_frequency" property="wrtHeartFrequency" jdbcType="INTEGER" />
+    <result column="wrt_gps_frequency" property="wrtGpsFrequency" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_gps_snapshot
+    where device_code = #{deviceCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zdzc.entity.GpsSnapshot" >
+    insert into t_gps_snapshot (device_code, alarm_status, vehicle_status, 
+      lat, lon, height, speed, 
+      direction, time, mile, 
+      oil, speed2, signal_status, 
+      bst, io_status, analog, 
+      wifi, satellite_num, create_time, 
+      vendor_code, heartbeat_time, bst_time, 
+      location_time, alarm_time, protocol_type, 
+      wrt_acc_status, wrt_bast_status, wrt_tear_status, 
+      wrt_work_status, wrt_manual_bast, wrt_auto_bast, 
+      wrt_autobast_time, wrt_power_status, wrt_opower_status, 
+      wrt_move_status, wrt_alarm_status, wrt_heart_frequency, 
+      wrt_gps_frequency)
+    values (#{deviceCode,jdbcType=VARCHAR}, #{alarmStatus,jdbcType=INTEGER}, #{vehicleStatus,jdbcType=INTEGER}, 
+      #{lat,jdbcType=DOUBLE}, #{lon,jdbcType=DOUBLE}, #{height,jdbcType=DOUBLE}, #{speed,jdbcType=DOUBLE}, 
+      #{direction,jdbcType=DOUBLE}, #{time,jdbcType=BIGINT}, #{mile,jdbcType=DOUBLE}, 
+      #{oil,jdbcType=DOUBLE}, #{speed2,jdbcType=DOUBLE}, #{signalStatus,jdbcType=INTEGER}, 
+      #{bst,jdbcType=INTEGER}, #{ioStatus,jdbcType=INTEGER}, #{analog,jdbcType=VARCHAR}, 
+      #{wifi,jdbcType=INTEGER}, #{satelliteNum,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{vendorCode,jdbcType=VARCHAR}, #{heartbeatTime,jdbcType=VARCHAR}, #{bstTime,jdbcType=BIGINT}, 
+      #{locationTime,jdbcType=TIMESTAMP}, #{alarmTime,jdbcType=TIMESTAMP}, #{protocolType,jdbcType=VARCHAR}, 
+      #{wrtAccStatus,jdbcType=VARCHAR}, #{wrtBastStatus,jdbcType=VARCHAR}, #{wrtTearStatus,jdbcType=VARCHAR}, 
+      #{wrtWorkStatus,jdbcType=VARCHAR}, #{wrtManualBast,jdbcType=VARCHAR}, #{wrtAutoBast,jdbcType=VARCHAR}, 
+      #{wrtAutobastTime,jdbcType=INTEGER}, #{wrtPowerStatus,jdbcType=VARCHAR}, #{wrtOpowerStatus,jdbcType=VARCHAR}, 
+      #{wrtMoveStatus,jdbcType=VARCHAR}, #{wrtAlarmStatus,jdbcType=VARCHAR}, #{wrtHeartFrequency,jdbcType=INTEGER}, 
+      #{wrtGpsFrequency,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zdzc.entity.GpsSnapshot" >
+    update t_gps_snapshot
+    set alarm_status = #{alarmStatus,jdbcType=INTEGER},
+      vehicle_status = #{vehicleStatus,jdbcType=INTEGER},
+      lat = #{lat,jdbcType=DOUBLE},
+      lon = #{lon,jdbcType=DOUBLE},
+      height = #{height,jdbcType=DOUBLE},
+      speed = #{speed,jdbcType=DOUBLE},
+      direction = #{direction,jdbcType=DOUBLE},
+      time = #{time,jdbcType=BIGINT},
+      mile = #{mile,jdbcType=DOUBLE},
+      oil = #{oil,jdbcType=DOUBLE},
+      speed2 = #{speed2,jdbcType=DOUBLE},
+      signal_status = #{signalStatus,jdbcType=INTEGER},
+      bst = #{bst,jdbcType=INTEGER},
+      io_status = #{ioStatus,jdbcType=INTEGER},
+      analog = #{analog,jdbcType=VARCHAR},
+      wifi = #{wifi,jdbcType=INTEGER},
+      satellite_num = #{satelliteNum,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      vendor_code = #{vendorCode,jdbcType=VARCHAR},
+      heartbeat_time = #{heartbeatTime,jdbcType=VARCHAR},
+      bst_time = #{bstTime,jdbcType=BIGINT},
+      location_time = #{locationTime,jdbcType=TIMESTAMP},
+      alarm_time = #{alarmTime,jdbcType=TIMESTAMP},
+      protocol_type = #{protocolType,jdbcType=VARCHAR},
+      wrt_acc_status = #{wrtAccStatus,jdbcType=VARCHAR},
+      wrt_bast_status = #{wrtBastStatus,jdbcType=VARCHAR},
+      wrt_tear_status = #{wrtTearStatus,jdbcType=VARCHAR},
+      wrt_work_status = #{wrtWorkStatus,jdbcType=VARCHAR},
+      wrt_manual_bast = #{wrtManualBast,jdbcType=VARCHAR},
+      wrt_auto_bast = #{wrtAutoBast,jdbcType=VARCHAR},
+      wrt_autobast_time = #{wrtAutobastTime,jdbcType=INTEGER},
+      wrt_power_status = #{wrtPowerStatus,jdbcType=VARCHAR},
+      wrt_opower_status = #{wrtOpowerStatus,jdbcType=VARCHAR},
+      wrt_move_status = #{wrtMoveStatus,jdbcType=VARCHAR},
+      wrt_alarm_status = #{wrtAlarmStatus,jdbcType=VARCHAR},
+      wrt_heart_frequency = #{wrtHeartFrequency,jdbcType=INTEGER},
+      wrt_gps_frequency = #{wrtGpsFrequency,jdbcType=INTEGER}
+    where device_code = #{deviceCode,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select device_code, alarm_status, vehicle_status, lat, lon, height, speed, direction, 
+    time, mile, oil, speed2, signal_status, bst, io_status, analog, wifi, satellite_num, 
+    create_time, vendor_code, heartbeat_time, bst_time, location_time, alarm_time, protocol_type, 
+    wrt_acc_status, wrt_bast_status, wrt_tear_status, wrt_work_status, wrt_manual_bast, 
+    wrt_auto_bast, wrt_autobast_time, wrt_power_status, wrt_opower_status, wrt_move_status, 
+    wrt_alarm_status, wrt_heart_frequency, wrt_gps_frequency
+    from t_gps_snapshot
+    where device_code = #{deviceCode,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select device_code, alarm_status, vehicle_status, lat, lon, height, speed, direction, 
+    time, mile, oil, speed2, signal_status, bst, io_status, analog, wifi, satellite_num, 
+    create_time, vendor_code, heartbeat_time, bst_time, location_time, alarm_time, protocol_type, 
+    wrt_acc_status, wrt_bast_status, wrt_tear_status, wrt_work_status, wrt_manual_bast, 
+    wrt_auto_bast, wrt_autobast_time, wrt_power_status, wrt_opower_status, wrt_move_status, 
+    wrt_alarm_status, wrt_heart_frequency, wrt_gps_frequency
+    from t_gps_snapshot
+  </select>
+</mapper>
