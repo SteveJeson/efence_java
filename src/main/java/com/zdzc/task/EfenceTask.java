@@ -1,5 +1,8 @@
 package com.zdzc.task;
 
+import com.zdzc.entity.Efence;
+import com.zdzc.service.EfenceService;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,12 +17,14 @@ public class EfenceTask implements Runnable {
     private int alarmType;//报警类型，1：进栏报警，2：出栏报警，3：进出栏报警
     private List<String> deviceCodeList;//
     private int interval;//任务执行间隔，单位 秒
+    private EfenceService efenceService;
 
-    public EfenceTask(String efenceCode, int alarmType, List<String> deviceCodeList, int interval){
+    public EfenceTask(String efenceCode, int alarmType, List<String> deviceCodeList, int interval, EfenceService efenceService){
         this.efenceCode = efenceCode;
         this.alarmType = alarmType;
         this.deviceCodeList = deviceCodeList;
         this.interval = interval;
+        this.efenceService = efenceService;
     }
 
     @Override
@@ -32,9 +37,12 @@ public class EfenceTask implements Runnable {
     }
 
     void startWork() throws Exception{
+        //1.获取电子围栏的坐标和类型
+        Efence efence = efenceService.selectEfenceByCode(efenceCode);
+        if (efence == null){
+            stop = true;
+        }
         while (!stop){
-            //1.获取电子围栏的坐标和类型
-
             //2.获取所有设备最新经纬度信息
 
             //3.遍历设备号列表，处理逻辑
